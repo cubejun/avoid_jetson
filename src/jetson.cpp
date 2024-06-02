@@ -46,17 +46,16 @@ void Pub::mysub_callback(Dxl& mdxl, const std_msgs::msg::Int32::SharedPtr intmsg
 	    rvel = -50;//오른쪽 바퀴 속도
     }
     else  if(err == 400){
-        lvel = 100;//왼쪽 바퀴 속도
-	    rvel = 100;//오른쪽 바퀴 속도
+        lvel = 50;//왼쪽 바퀴 속도
+	    rvel = 50;//오른쪽 바퀴 속도
     }
     else  if(err == 500){
-        lvel = -100;//왼쪽 바퀴 속도
-	    rvel = -100;//오른쪽 바퀴 속도
+        lvel = -50;//왼쪽 바퀴 속도
+	    rvel = -50;//오른쪽 바퀴 속도
     }
     else {
         lvel = 50 - gain * -err;//왼쪽 바퀴 속도
 	    rvel = -(52 + gain * -err);//오른쪽 바퀴 속도
-        chk = 0;
     }
 
     RCLCPP_INFO(this->get_logger(), "Received message: %d %d", lvel, rvel);
